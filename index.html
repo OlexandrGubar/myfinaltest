@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final</title>
+</head>
+<body>
+    <script>
+        var names = new Array();
+        var positions = ['Junior developer', 'Middle developer', 'Senior developer', 'Junior QA', 'Middle QA', 'Senior QA', 'Project manager'];
+        function getNames(){
+            for(var i = 0; i < 7; i++){
+                do {
+                    var name = prompt("Enter name of worker");
+                } while(typeof name !== 'string')
+                names.push(name);
+
+            }
+            console.log(names);
+        }
+
+        function createTeam(mas){
+
+            for (var i = 0; i < mas.length; i++){
+                var employer = new Object();
+                employer.name = names[i];
+                employer.position = positions[i];
+                function setSalary(){
+                    var random = Math.random();
+                    var salary;
+                    if(employer.position.indexOf("Junior") === 0) {
+                        if(random >= 0.8){
+                            salary = 1000;
+                        } else if(random > 0.6){
+                            salary = 900;
+                        } else if (random > 0.4) {
+                            salary = 800;
+                        } else if (random >= 0.2) {
+                            salary = 650;
+                        } else {
+                            salary = 2500;
+                        }
+                    } else if (employer.position.indexOf("Middle") === 0) {
+                        if(random >= 0.8){
+                            salary = 2000;
+                        } else if(random > 0.6){
+                            salary = 1900;
+                        } else if (random > 0.4) {
+                            salary = 1800;
+                        } else if (random >= 0.2) {
+                            salary = 1650;
+                        } else {
+                            salary = 1500;
+                        }
+                    }
+                    else if (employer.position.indexOf("Senior") === 0) {
+                        if(random >= 0.8){
+                            salary = 3000;
+                        } else if(random > 0.6){
+                            salary = 2900;
+                        } else if (random > 0.4) {
+                            salary = 2800;
+                        } else if (random >= 0.2) {
+                            salary = 2650;
+                        } else {
+                            salary = 2500;
+                        }
+                    } else {
+                        if(random >= 0.8){
+                            salary = 4500
+                        } else if(random >= 0.6){
+                            salary = 4400;
+                        } else if (random > 0.4) {
+                            salary = 4300;
+                        } else if (random > 0.2) {
+                            salary = 41500;
+                        } else {
+                            salary = 4000;
+                        }
+                    }
+                    return salary;
+                }
+                employer.salary = setSalary();
+                employer.tellAboutYourself = function(){
+                    console.log("Hello, my name is " + names[i] + "and I`m " + positions[i] + ". My salary is " + employer.salary); 
+
+                }
+
+                employer.tellAboutYourself();
+                team.workers.push(employer)
+            }
+         }
+             var team = {
+            workers: new Array(),
+            showTeam: function(){
+                for(var i = 0; i < this.workers.length; i++){
+                    console.log(this.workers[i].name + " - " + this.workers[i].position + ". Salary is - " + this.workers[i].salary + ".");
+                }
+            }
+
+        } 
+        console.log(team);
+
+        getNames();
+        createTeam(names);
+        team.showTeam(); 
+
+    </script>
+</body>
+</html>
